@@ -1,0 +1,17 @@
+[Unit]
+Description="Programmable-Christmas-Star"
+
+[Service]
+TimeoutStartSec=30
+WorkingDirectory=/home/pi/Programmable-Christmas-Star
+ExecStart=/usr/bin/python3 /home/pi/Programmable-Christmas-Star/slow_walk.py --service --log DEBUG
+Restart=always
+KillSignal=SIGINT
+#User=pi
+Environment=PYTHONUNBUFFERED=true
+Type=notify
+# restart after 20 seconds if it fails
+WatchdogSec=20
+
+[Install]
+WantedBy=multi-user.target
